@@ -14,12 +14,12 @@ public class Board {
 
     private static HashMap addTerritories() {
         HashMap<String,Territory>  territories = new HashMap<>();
-        addNorthAmerica(territories);
-        addSouthAmerica(territories);
-        addEurope(territories);
-        addAfrica(territories);
-        addAsia(territories);
-        addAustralia(territories);
+        //addNorthAmerica(territories);
+        //addSouthAmerica(territories);
+        //addEurope(territories);
+        //addAfrica(territories);
+        //addAsia(territories);
+        //addAustralia(territories);
         return territories;
     }
 
@@ -85,6 +85,35 @@ public class Board {
     }
 
     private static void setNeighbours() {
+        //setNeighboursNorthAmerica();
+        //setNeighboursSouthAmerica();
+        //setNeighboursEurope();
+        //setNeighboursAfrica();
+        //setNeighboursAsia();
+        //setNeighboursAustralia();
+    }
+
+    private static void setNeighboursAustralia() {
+        //TODO
+    }
+
+    private static void setNeighboursAsia() {
+        //TODO
+    }
+
+    private static void setNeighboursAfrica() {
+        //TODO
+    }
+
+    private static void setNeighboursEurope() {
+        //TODO
+    }
+
+    private static void setNeighboursSouthAmerica() {
+        //TODO
+    }
+
+    private static void setNeighboursNorthAmerica() {
         ArrayList<String> neighbours = new ArrayList<String>();
         neighbours.add("Alberta");
         neighbours.add("Northwest Territory");

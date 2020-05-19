@@ -1,0 +1,299 @@
+{
+  "territories":
+  [
+    {
+      "name": "Alaska",
+      "continent": "North America",
+      "neighbours": ["Alberta", "Northwest Territory", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Alberta",
+      "continent": "North America",
+      "neighbours": ["Alaska", "Northwest Territory", "Ontario", "Western United States"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Central America",
+      "continent": "North America",
+      "neighbours": ["Eastern United States", "Western United States", "Venezuela"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Eastern United States",
+      "continent": "North America",
+      "neighbours": ["Central America", "Western United States", "Ontario", "Quebec"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Greenland",
+      "continent": "North America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Northwest Territory",
+      "continent": "North America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Ontario",
+      "continent": "North America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Quebec",
+      "continent": "North America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Western United States",
+      "continent": "North America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Argentina",
+      "continent": "South America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Brazil",
+      "continent": "South America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Peru",
+      "continent": "South America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Venezuela",
+      "continent": "South America",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Great Britain",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Iceland",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Northern Europe",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Scandinavia",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Southern Europe",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Ukraine",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Western Europe",
+      "continent": "Europe",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Congo",
+      "continent": "Africa",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "East Africa",
+      "continent": "Africa",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Egypt",
+      "continent": "Africa",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Madagascar",
+      "continent": "Africa",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "North Africa",
+      "continent": "Africa",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "South Africa",
+      "continent": "Africa",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Afghanistan",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "China",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "India",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Irkutsk",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Japan",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Kamchatka",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Middle East",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Mongolia",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Siam",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Siberia",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Ural",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Yakutsk",
+      "continent": "Asia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Eastern Australia",
+      "continent": "Australia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Indonesia",
+      "continent": "Australia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "New Guinea",
+      "continent": "Australia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "name": "Western Australia",
+      "continent": "Australia",
+      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "lat": 0,
+      "lon": 0
+    }
+  ]
+}
