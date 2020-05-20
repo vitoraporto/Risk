@@ -32,161 +32,161 @@
     {
       "name": "Greenland",
       "continent": "North America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Northwest Territory", "Ontario", "Quebec", "Iceland"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Northwest Territory",
       "continent": "North America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Alaska", "Alberta", "Ontario", "Greenland"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Ontario",
       "continent": "North America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Alberta", "Northwest Territory", "Greenland", "Quebec", "Eastern United States", "Western United States"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Quebec",
       "continent": "North America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Greenland", "Eastern United States", "Ontario"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Western United States",
       "continent": "North America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Alberta", "Ontario", "Eastern United States", "Central America"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Argentina",
       "continent": "South America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Brazil", "Peru"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Brazil",
       "continent": "South America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Argentina", "Peru", "Venezuela", "North Africa"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Peru",
       "continent": "South America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Argentina", "Brazil", "Venezuela"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Venezuela",
       "continent": "South America",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Brazil", "Peru", "Central America"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Great Britain",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Iceland", "Northern Europe", "Scandinavia", "Western Europe"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Iceland",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Great Britain", "Greenland", "Scandinavia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Northern Europe",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Western Europe", "Great Britain", "Scandinavia", "Ukraine", "Southern Europe"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Scandinavia",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Great Britain", "Iceland", "Northern Europe", "Ukraine"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Southern Europe",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Northern Europe", "Ukraine", "Western Europe", "North Africa", "Egypt", "Middle East"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Ukraine",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Northern Europe", "Scandinavia", "Southern Europe", "Afghanistan", "Middle East", "Ural"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Western Europe",
       "continent": "Europe",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Great Britain", "Northern Europe", "Southern Europe", "North Africa"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Congo",
       "continent": "Africa",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["East Africa", "North Africa", "South Africa"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "East Africa",
       "continent": "Africa",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Congo", "Egypt", "Madagascar", "North Africa", "South Africa", "Middle East"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Egypt",
       "continent": "Africa",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["East Africa", "North Africa", "Southern Europe", "Middle East"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Madagascar",
       "continent": "Africa",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["East Africa", "South Africa"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "North Africa",
       "continent": "Africa",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Congo", "East Africa", "Egypt", "Brazil", "Western Europe", "Southern Europe"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "South Africa",
       "continent": "Africa",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Congo", "East Africa", "Madagascar"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Afghanistan",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["China", "India", "Middle East", "Ural", "Ukraine"],
       "lat": 0,
       "lon": 0
     },
