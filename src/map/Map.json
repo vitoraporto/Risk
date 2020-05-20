@@ -193,105 +193,105 @@
     {
       "name": "China",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Afghanistan", "India", "Mongolia", "Siam", "Siberia", "Ural"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "India",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Afghanistan", "China", "Middle East", "Siam"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Irkutsk",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Kamchatka", "Mongolia", "Siberia", "Yakutsk"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Japan",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Kamchatka", "Mongolia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Kamchatka",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Irkutsk", "Japan", "Mongolia", "Yakutsk", "Alaska"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Middle East",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Afghanistan", "India", "Ukraine", "Egypt", "East Africa"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Mongolia",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Irkutsk", "Japan", "Kamchatka", "China", "Siberia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Siam",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["China", "India", "Indonesia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Siberia",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["China", "Irkutsk", "Mongolia", "Ural", "Yakutsk"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Ural",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Afghanistan", "China", "Siberia", "Ukraine"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Yakutsk",
       "continent": "Asia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Irkutsk", "Kamchatka", "Siberia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Eastern Australia",
       "continent": "Australia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["New Guinea", "Western Australia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Indonesia",
       "continent": "Australia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Siam", "New Guinea", "Western Australia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "New Guinea",
       "continent": "Australia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Eastern Australia", "Indonesia", "Western Australia"],
       "lat": 0,
       "lon": 0
     },
     {
       "name": "Western Australia",
       "continent": "Australia",
-      "neighbours": ["Alberta", "Northwest", "Kamchatka"],
+      "neighbours": ["Eastern Australia", "Indonesia", "New Guinea"],
       "lat": 0,
       "lon": 0
     }
