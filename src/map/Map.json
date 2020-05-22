@@ -5,253 +5,253 @@
       "name": "Alaska",
       "continent": "North America",
       "neighbours": ["Alberta", "Northwest Territory", "Kamchatka"],
-      "lat": 0,
-      "lon": 0
+      "lat": 553,
+      "lon": 1145
     },
     {
       "name": "Alberta",
       "continent": "North America",
       "neighbours": ["Alaska", "Northwest Territory", "Ontario", "Western United States"],
-      "lat": 0,
-      "lon": 0
+      "lat": 511,
+      "lon": 1085
     },
     {
       "name": "Central America",
       "continent": "North America",
       "neighbours": ["Eastern United States", "Western United States", "Venezuela"],
-      "lat": 0,
-      "lon": 0
+      "lat": 376,
+      "lon": 1088
     },
     {
       "name": "Eastern United States",
       "continent": "North America",
       "neighbours": ["Central America", "Western United States", "Ontario", "Quebec"],
-      "lat": 0,
-      "lon": 0
+      "lat": 438,
+      "lon": 1016
     },
     {
       "name": "Greenland",
       "continent": "North America",
       "neighbours": ["Northwest Territory", "Ontario", "Quebec", "Iceland"],
-      "lat": 0,
-      "lon": 0
+      "lat": 587,
+      "lon": 794
     },
     {
       "name": "Northwest Territory",
       "continent": "North America",
       "neighbours": ["Alaska", "Alberta", "Ontario", "Greenland"],
-      "lat": 0,
-      "lon": 0
+      "lat": 556,
+      "lon": 1047
     },
     {
       "name": "Ontario",
       "continent": "North America",
       "neighbours": ["Alberta", "Northwest Territory", "Greenland", "Quebec", "Eastern United States", "Western United States"],
-      "lat": 0,
-      "lon": 0
+      "lat": 507,
+      "lon": 996
     },
     {
       "name": "Quebec",
       "continent": "North America",
       "neighbours": ["Greenland", "Eastern United States", "Ontario"],
-      "lat": 0,
-      "lon": 0
+      "lat": 505,
+      "lon": 919
     },
     {
       "name": "Western United States",
       "continent": "North America",
       "neighbours": ["Alberta", "Ontario", "Eastern United States", "Central America"],
-      "lat": 0,
-      "lon": 0
+      "lat": 452,
+      "lon": 1001
     },
     {
       "name": "Argentina",
       "continent": "South America",
       "neighbours": ["Brazil", "Peru"],
-      "lat": 0,
-      "lon": 0
+      "lat": 118,
+      "lon": 931
     },
     {
       "name": "Brazil",
       "continent": "South America",
       "neighbours": ["Argentina", "Peru", "Venezuela", "North Africa"],
-      "lat": 0,
-      "lon": 0
+      "lat": 213,
+      "lon": 885
     },
     {
       "name": "Peru",
       "continent": "South America",
       "neighbours": ["Argentina", "Brazil", "Venezuela"],
-      "lat": 0,
-      "lon": 0
+      "lat": 192,
+      "lon": 944
     },
     {
       "name": "Venezuela",
       "continent": "South America",
       "neighbours": ["Brazil", "Peru", "Central America"],
-      "lat": 0,
-      "lon": 0
+      "lat": 293,
+      "lon": 955
     },
     {
       "name": "Great Britain",
       "continent": "Europe",
       "neighbours": ["Iceland", "Northern Europe", "Scandinavia", "Western Europe"],
-      "lat": 0,
-      "lon": 0
+      "lat": 503,
+      "lon": 708
     },
     {
       "name": "Iceland",
       "continent": "Europe",
       "neighbours": ["Great Britain", "Greenland", "Scandinavia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 540,
+      "lon": 730
     },
     {
       "name": "Northern Europe",
       "continent": "Europe",
       "neighbours": ["Western Europe", "Great Britain", "Scandinavia", "Ukraine", "Southern Europe"],
-      "lat": 0,
-      "lon": 0
+      "lat": 495,
+      "lon": 619
     },
     {
       "name": "Scandinavia",
       "continent": "Europe",
       "neighbours": ["Great Britain", "Iceland", "Northern Europe", "Ukraine"],
-      "lat": 0,
-      "lon": 0
+      "lat": 542,
+      "lon": 619
     },
     {
       "name": "Southern Europe",
       "continent": "Europe",
       "neighbours": ["Northern Europe", "Ukraine", "Western Europe", "North Africa", "Egypt", "Middle East"],
-      "lat": 0,
-      "lon": 0
+      "lat": 462,
+      "lon": 587
     },
     {
       "name": "Ukraine",
       "continent": "Europe",
       "neighbours": ["Northern Europe", "Scandinavia", "Southern Europe", "Afghanistan", "Middle East", "Ural"],
-      "lat": 0,
-      "lon": 0
+      "lat": 507,
+      "lon": 540
     },
     {
       "name": "Western Europe",
       "continent": "Europe",
       "neighbours": ["Great Britain", "Northern Europe", "Southern Europe", "North Africa"],
-      "lat": 0,
-      "lon": 0
+      "lat": 462,
+      "lon": 666
     },
     {
       "name": "Congo",
       "continent": "Africa",
       "neighbours": ["East Africa", "North Africa", "South Africa"],
-      "lat": 0,
-      "lon": 0
+      "lat": 263,
+      "lon": 584
     },
     {
       "name": "East Africa",
       "continent": "Africa",
       "neighbours": ["Congo", "Egypt", "Madagascar", "North Africa", "South Africa", "Middle East"],
-      "lat": 0,
-      "lon": 0
+      "lat": 299,
+      "lon": 507
     },
     {
       "name": "Egypt",
       "continent": "Africa",
       "neighbours": ["East Africa", "North Africa", "Southern Europe", "Middle East"],
-      "lat": 0,
-      "lon": 0
+      "lat": 388,
+      "lon": 584
     },
     {
       "name": "Madagascar",
       "continent": "Africa",
       "neighbours": ["East Africa", "South Africa"],
-      "lat": 0,
-      "lon": 0
+      "lat": 177,
+      "lon": 480
     },
     {
       "name": "North Africa",
       "continent": "Africa",
       "neighbours": ["Congo", "East Africa", "Egypt", "Brazil", "Western Europe", "Southern Europe"],
-      "lat": 0,
-      "lon": 0
+      "lat": 346,
+      "lon": 677
     },
     {
       "name": "South Africa",
       "continent": "Africa",
       "neighbours": ["Congo", "East Africa", "Madagascar"],
-      "lat": 0,
-      "lon": 0
+      "lat": 174,
+      "lon": 580
     },
     {
       "name": "Afghanistan",
       "continent": "Asia",
       "neighbours": ["China", "India", "Middle East", "Ural", "Ukraine"],
-      "lat": 0,
-      "lon": 0
+      "lat": 467,
+      "lon": 426
     },
     {
       "name": "China",
       "continent": "Asia",
       "neighbours": ["Afghanistan", "India", "Mongolia", "Siam", "Siberia", "Ural"],
-      "lat": 0,
-      "lon": 0
+      "lat": 415,
+      "lon": 274
     },
     {
       "name": "India",
       "continent": "Asia",
       "neighbours": ["Afghanistan", "China", "Middle East", "Siam"],
-      "lat": 0,
-      "lon": 0
+      "lat": 370,
+      "lon": 355
     },
     {
       "name": "Irkutsk",
       "continent": "Asia",
       "neighbours": ["Kamchatka", "Mongolia", "Siberia", "Yakutsk"],
-      "lat": 0,
-      "lon": 0
+      "lat": 507,
+      "lon": 273
     },
     {
       "name": "Japan",
       "continent": "Asia",
       "neighbours": ["Kamchatka", "Mongolia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 431,
+      "lon": 114
     },
     {
       "name": "Kamchatka",
       "continent": "Asia",
       "neighbours": ["Irkutsk", "Japan", "Mongolia", "Yakutsk", "Alaska"],
-      "lat": 0,
-      "lon": 0
+      "lat": 550,
+      "lon": 155
     },
     {
       "name": "Middle East",
       "continent": "Asia",
       "neighbours": ["Afghanistan", "India", "Ukraine", "Egypt", "East Africa"],
-      "lat": 0,
-      "lon": 0
+      "lat": 417,
+      "lon": 503
     },
     {
       "name": "Mongolia",
       "continent": "Asia",
       "neighbours": ["Irkutsk", "Japan", "Kamchatka", "China", "Siberia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 468,
+      "lon": 263
     },
     {
       "name": "Siam",
       "continent": "Asia",
       "neighbours": ["China", "India", "Indonesia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 338,
+      "lon": 249
     },
     {
       "name": "Siberia",
       "continent": "Asia",
       "neighbours": ["China", "Irkutsk", "Mongolia", "Ural", "Yakutsk"],
-      "lat": 0,
-      "lon": 0
+      "lat": 550,
+      "lon": 363
     },
     {
       "name": "Ural",
@@ -264,36 +264,36 @@
       "name": "Yakutsk",
       "continent": "Asia",
       "neighbours": ["Irkutsk", "Kamchatka", "Siberia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 532,
+      "lon": 433
     },
     {
       "name": "Eastern Australia",
       "continent": "Australia",
       "neighbours": ["New Guinea", "Western Australia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 145,
+      "lon": 88
     },
     {
       "name": "Indonesia",
       "continent": "Australia",
       "neighbours": ["Siam", "New Guinea", "Western Australia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 263,
+      "lon": 202
     },
     {
       "name": "New Guinea",
       "continent": "Australia",
       "neighbours": ["Eastern Australia", "Indonesia", "Western Australia"],
-      "lat": 0,
-      "lon": 0
+      "lat": 237,
+      "lon": 83
     },
     {
       "name": "Western Australia",
       "continent": "Australia",
       "neighbours": ["Eastern Australia", "Indonesia", "New Guinea"],
-      "lat": 0,
-      "lon": 0
+      "lat": 139,
+      "lon": 181
     }
   ]
 }
