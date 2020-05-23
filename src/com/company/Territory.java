@@ -7,6 +7,7 @@ public class Territory {
     private String name;
     private Continent continent;
     private Set<Territory> neighbours = new HashSet<Territory>();
+    private Player owner;
 
     public Territory(String name, Continent continent){
         this.name = name;
@@ -17,6 +18,12 @@ public class Territory {
         if (!neighbours.contains(neighbour)) {
             neighbours.add(neighbour);
             neighbour.addNeighbour(this);
+        }
+    }
+
+    public void setOwner(Player player) {
+        if (player != owner){
+            owner = player;
         }
     }
 }

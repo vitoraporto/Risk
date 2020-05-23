@@ -1,8 +1,7 @@
 package com.company;
 
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -74,6 +73,17 @@ public class Board {
                 return Continent.Asia;
             default:
                 return Continent.Australia;
+        }
+    }
+
+    public void distributeTerritories(ArrayList<Player> players) {
+        ArrayList<Territory> arrayTerritories = new ArrayList<>();
+        for (Territory terr : territories.values()){
+            arrayTerritories.add(terr);
+        }
+        Collections.shuffle(arrayTerritories);
+        for (int i = 0; i < arrayTerritories.size(); i++){
+            arrayTerritories.get(i).setOwner(players.get(i % players.size()));
         }
     }
 }

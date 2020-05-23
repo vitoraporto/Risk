@@ -3,6 +3,7 @@ package com.company;
 public class Player {
     private String colour;
 
+
     public Player(int colour) {
         switch (colour){
             case 0:
