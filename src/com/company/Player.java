@@ -2,6 +2,7 @@ package com.company;
 
 public class Player {
     private String colour;
+    private int armiesAvailable;
 
 
     public Player(int colour) {
@@ -26,5 +27,17 @@ public class Player {
                 break;
         }
 
+    }
+
+    public void setArmiesAvailable(int armies){
+        armiesAvailable = armies;
+    }
+
+    public int getArmiesAvailable(){
+        return armiesAvailable;
+    }
+
+    public void decreaseArmiesAvailable(int i) {
+        armiesAvailable = armiesAvailable - i;
     }
 }

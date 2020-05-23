@@ -83,7 +83,9 @@ public class Board {
         }
         Collections.shuffle(arrayTerritories);
         for (int i = 0; i < arrayTerritories.size(); i++){
-            arrayTerritories.get(i).setOwner(players.get(i % players.size()));
+            Player player = players.get(i % players.size());
+            arrayTerritories.get(i).setOwner(player);
+            player.decreaseArmiesAvailable(1);
         }
     }
 }

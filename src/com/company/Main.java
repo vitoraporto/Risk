@@ -11,8 +11,13 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int numPlayers = in.nextInt();
         if (numPlayers > 2 && numPlayers <= 6) {
-            Match match = new Match(numPlayers);
-            match.play();
+            Match match = null;
+            try {
+                match = new Match(numPlayers);
+                match.play();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             System.out.println("invalid number of players");
         }
