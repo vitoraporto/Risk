@@ -111,4 +111,28 @@ public class Board {
     public Territory getTerritory(String name){
         return territories.get(name);
     }
+
+    public int countTerritories(Player player) {
+        return getPlayerTerritories(player).size();
+    }
+
+    public boolean controlContinent(Player player, Continent continent) {
+        for (Territory terr : territories.values()){
+            if (terr.inContinent(continent)){
+                if (!terr.isOwned(player)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean won(Player player) {
+        for (Territory terr : territories.values()){
+            if (!terr.isOwned(player)){
+                return false;
+            }
+        }
+        return true;
+    }
 }

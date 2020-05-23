@@ -8,6 +8,7 @@ public class Match {
     private ArrayList<Player> players;
     private static Board board;
     private Scanner in = new Scanner(System.in);
+    private ArrayList<Player> playersLost = new ArrayList<Player>();
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -49,7 +50,70 @@ public class Match {
 
     public void play() {
         initialPlaceArmies();
+        int currPlayerIdx = 0;
+        Player currPlayer;
+        while (true){
+            currPlayer = players.get(currPlayerIdx);
+            if (!playersLost.contains(currPlayer)){
+                getAndPlaceArmies(currPlayer);
+                attacking(currPlayer);
+                if (board.won(currPlayer)){
+                    System.out.print(currPlayer.getColour());
+                    System.out.println(" won the game!");
+                    break;
+                }
+                fortifying(currPlayer);
+            }
+            currPlayerIdx = (currPlayerIdx + 1) % players.size();
+        }
+    }
+
+    private void fortifying(Player currPlayer) {
         //TODO
+    }
+
+    private void attacking(Player currPlayer) {
+        //Todo
+        //todo: remember to check if some player lost
+    }
+
+    private void getAndPlaceArmies(Player player) {
+        int newArmies = getTerritoryArmies(player);
+        newArmies = newArmies + getContinentArmies(player);
+        player.setArmiesAvailable(newArmies);
+        placeArmies(player);
+    }
+
+    private int getContinentArmies(Player player) {
+        int armies = 0;
+        if (board.controlContinent(player, Continent.NorthAmerica)){
+            armies = armies + 5;
+        }
+        if (board.controlContinent(player, Continent.Australia)){
+            armies = armies + 2;
+        }
+        if (board.controlContinent(player, Continent.Asia)){
+            armies = armies + 7;
+        }
+        if (board.controlContinent(player, Continent.Africa)){
+            armies = armies + 3;
+        }
+        if (board.controlContinent(player, Continent.Europe)){
+            armies = armies + 5;
+        }
+        if (board.controlContinent(player, Continent.SouthAmerica)){
+            armies = armies + 2;
+        }
+        return armies;
+    }
+
+    private int getTerritoryArmies(Player player) {
+        int countTerr = board.countTerritories(player);
+        int newArmies = countTerr/3;
+        if (newArmies < 3) {
+            newArmies = 3;
+        }
+        return newArmies;
     }
 
     private void initialPlaceArmies() {

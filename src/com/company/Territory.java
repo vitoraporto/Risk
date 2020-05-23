@@ -46,4 +46,8 @@ public class Territory {
     private void increaseArmies(int numArmies) {
         armies = armies + numArmies;
     }
+
+    public boolean inContinent(Continent continent) {
+        return this.continent == continent;
+    }
 }
