@@ -10,7 +10,7 @@ public class Main {
         System.out.println("How many players?");
         Scanner in = new Scanner(System.in);
         int numPlayers = in.nextInt();
-        if (numPlayers > 1 && numPlayers <= 6) {
+        if (numPlayers > 2 && numPlayers <= 6) {
             Match match = new Match(numPlayers);
             match.play();
         } else {

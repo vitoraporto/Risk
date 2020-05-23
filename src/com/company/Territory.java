@@ -8,6 +8,7 @@ public class Territory {
     private Continent continent;
     private Set<Territory> neighbours = new HashSet<Territory>();
     private Player owner;
+    private int armies = 1;
 
     public Territory(String name, Continent continent){
         this.name = name;
