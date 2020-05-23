@@ -14,7 +14,7 @@ public class Match {
         makePlayers(numPlayers);
         distributeArmiesInitial();
         board = new Board();
-        shuflePlayers();
+        shufflePlayers();
         board.distributeTerritories(players);
     }
 
@@ -150,7 +150,7 @@ public class Match {
         }
     }
 
-    private void shuflePlayers() {
+    private void shufflePlayers() {
         int numPlayers = players.size();
         double doublePlayer = Math.random()*numPlayers;
         int firstplayer = (int) doublePlayer;
