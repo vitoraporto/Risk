@@ -40,4 +40,10 @@ public class Player {
     public void decreaseArmiesAvailable(int i) {
         armiesAvailable = armiesAvailable - i;
     }
+
+    public String getColour() {return colour;}
+
+    public boolean hasArmies() {
+        return armiesAvailable > 0;
+    }
 }

@@ -27,4 +27,23 @@ public class Territory {
             owner = player;
         }
     }
+
+    public boolean isOwned(Player player) {
+        return player == owner;
+    }
+
+    public String getName() {return name;}
+
+    public void placeArmies(int numArmies) {
+        if(owner.getArmiesAvailable() >= numArmies) {
+            owner.decreaseArmiesAvailable(numArmies);
+            increaseArmies(numArmies);
+        } else {
+            System.out.println("Do not have enough armies available");
+        }
+    }
+
+    private void increaseArmies(int numArmies) {
+        armies = armies + numArmies;
+    }
 }

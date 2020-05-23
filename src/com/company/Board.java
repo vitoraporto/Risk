@@ -88,4 +88,27 @@ public class Board {
             player.decreaseArmiesAvailable(1);
         }
     }
+
+    public Collection<Territory> getPlayerTerritories(Player player) {
+        Collection<Territory> territories = new ArrayList<Territory>();
+        for (Territory territory : this.territories.values()) {
+            if (territory.isOwned(player)) {
+                territories.add(territory);
+            }
+        }
+        return territories;
+    }
+
+    public boolean playerIsOwner(Player player, String territoryName) {
+        Territory territory = territories.get(territoryName);
+        if (territory != null) {
+            return territory.isOwned(player);
+        } else {
+            return false;
+        }
+    }
+
+    public Territory getTerritory(String name){
+        return territories.get(name);
+    }
 }

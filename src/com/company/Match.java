@@ -1,10 +1,13 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Scanner;
 
 public class Match {
     private ArrayList<Player> players;
     private static Board board;
+    private Scanner in = new Scanner(System.in);
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -51,20 +54,42 @@ public class Match {
 
     private void initialPlaceArmies() {
         for (Player player : players) {
+            System.out.print(player.getColour());
+            System.out.println(" initial place armies:");
             placeArmies(player);
         }
     }
 
     private void placeArmies(Player player) {
-        System.out.print("you have ");
-        System.out.print(player.getArmiesAvailable());
-        System.out.println(" armies available");
-        //TODO
+        while (player.hasArmies()){
+            System.out.print("you have ");
+            System.out.print(player.getArmiesAvailable());
+            System.out.println(" armies available");
+            System.out.println("Where to place armies?");
+            printPlayerTerritories(player);
+            String territoryName = in.next();
+            territoryName = territoryName.replaceAll("_", " ");
+            if (board.playerIsOwner(player, territoryName)){
+                System.out.println("How many armies do you want to place at that territory?");
+                int numArmies = in.nextInt();
+                board.getTerritory(territoryName).placeArmies(numArmies);
+            } else {
+                System.out.println("Territory not available");
+            }
+        }
+    }
+
+    private void printPlayerTerritories(Player player) {
+        Collection<Territory> territories = board.getPlayerTerritories(player);
+        for (Territory territory : territories) {
+            System.out.println(territory.getName());
+        }
     }
 
     private void shuflePlayers() {
         int numPlayers = players.size();
-        int firstplayer = (int) Math.random()*numPlayers;
+        double doublePlayer = Math.random()*numPlayers;
+        int firstplayer = (int) doublePlayer;
         ArrayList<Player> newPlayers = new ArrayList<Player>();
         for (int i = 0; i < numPlayers; i++){
             newPlayers.add(players.get((firstplayer + i) % numPlayers));
