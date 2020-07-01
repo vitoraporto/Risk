@@ -62,9 +62,4 @@ public class MatchTest {
             fail("Should not throw exception because of number of players");
         }
     }
-
-    @Test
-    void playTest() {
-
-    }
 }
