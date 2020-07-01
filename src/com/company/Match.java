@@ -160,4 +160,16 @@ public class Match {
         }
         players = newPlayers;
     }
+
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
+
+    public static Board getBoard() {
+        return board;
+    }
+
+    public ArrayList<Player> getPlayersLost() {
+        return playersLost;
+    }
 }
