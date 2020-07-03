@@ -2,6 +2,7 @@ package com.company;
 
 import ui.Panel;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class Match {
     private Scanner in = new Scanner(System.in);
     private ArrayList<Player> playersLost = new ArrayList<Player>();
     private Panel panel;
+    private Player currPlayer;
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -120,32 +122,44 @@ public class Match {
     }
 
     private void initialPlaceArmies() {
+        panel.setPhase("Initial place armies:");
         for (Player player : players) {
             panel.setPlayer(player);
-            System.out.print(player.getColor());
-            System.out.println(" initial place armies:");
             placeArmies(player);
         }
     }
 
     private void placeArmies(Player player) {
         while (player.hasArmies()){
-            System.out.print("you have ");
-            System.out.print(player.getArmiesAvailable());
-            System.out.println(" armies available");
-            System.out.println("Where to place armies?");
+            String explanation = "You have " + player.getArmiesAvailable() + " armies available";
+            panel.setExplanation(explanation);
+            panel.setQuestion("Where to place armies?");
             printPlayerTerritories(player);
-            String territoryName = in.next();
-            territoryName = territoryName.replaceAll("_", " ");
+            String territoryName;
+            // territoryName = in.next();
+            territoryName = getInput();
+            //territoryName = territoryName.replaceAll("_", " ");
             if (board.playerIsOwner(player, territoryName)){
-                System.out.println("How many armies do you want to place at that territory?");
-                int numArmies = in.nextInt();
-                board.getTerritory(territoryName).placeArmies(numArmies);
-                panel.refresh();
+                panel.setQuestion("How many armies do you want to place at that territory?");
+                String sNumArmies = getInput();
+                int numArmies;
+                // numArmies = in.nextInt();
+                try{
+                    numArmies = Integer.parseInt(sNumArmies);
+                    board.getTerritory(territoryName).placeArmies(numArmies);
+                    panel.refresh();
+                } catch (Exception e) {
+                    System.out.println("Not a Number entered");
+                }
             } else {
                 System.out.println("Territory not available");
             }
         }
+    }
+
+    private String getInput() {
+        panel.temporaryBreak();
+        return panel.getInput();
     }
 
     private void printPlayerTerritories(Player player) {

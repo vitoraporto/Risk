@@ -17,11 +17,14 @@ import javax.swing.JPanel;
 
 public class Panel extends JPanel implements ActionListener {
     private Match match;
-    private JLabel textLable;
+    private JLabel question;
     private JTextField textField;
     private JButton button = new JButton("Enter");
     private BufferedImage image;
     private JLabel player;
+    private JLabel explanation;
+    private JLabel phase;
+    private boolean perform = false;
 
     public Panel(Match match, JTextField textField) {
         try {
@@ -36,8 +39,12 @@ public class Panel extends JPanel implements ActionListener {
         add(new JLabel("Current Player:"));
         player = new JLabel("");
         add(player);
-        textLable = new JLabel("Input: ");
-        add(textLable);
+        phase = new JLabel("");
+        add(phase);
+        explanation = new JLabel("");
+        add(explanation);
+        question = new JLabel("Input: ");
+        add(question);
         add(textField);
         button.addActionListener(this);
         add(button);
@@ -71,7 +78,7 @@ public class Panel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(textField.getText());
+        perform = true;
     }
 
     public void refresh() {
@@ -93,5 +100,34 @@ public class Panel extends JPanel implements ActionListener {
         } else if (color == Color.yellow){
             this.player.setText("Yellow");
         }
+    }
+
+    public void setQuestion(String s) {
+        question.setText(s);
+    }
+
+    public void setExplanation(String s){
+        explanation.setText(s);
+    }
+
+    public void setPhase(String s) {
+        phase.setText(s);
+    }
+
+    public boolean peformAction() {
+        return perform;
+    }
+
+    public void setPeform(boolean b) {
+        perform = b;
+    }
+
+    public void temporaryBreak() {
+        while (!peformAction()){}
+        setPeform(false);
+    }
+
+    public String getInput() {
+        return textField.getText();
     }
 }
