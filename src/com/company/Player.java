@@ -1,29 +1,31 @@
 package com.company;
 
+import java.awt.*;
+
 public class Player {
-    private String colour;
+    private Color color;
     private int armiesAvailable;
 
 
     public Player(int colour) {
         switch (colour){
             case 0:
-                this.colour = "black";
+                this.color = Color.black;
                 break;
             case 1:
-                this.colour = "white";
+                this.color = Color.white;
                 break;
             case 2:
-                this.colour = "red";
+                this.color = Color.red;
                 break;
             case 3:
-                this.colour = "blue";
+                this.color = Color.blue;
                 break;
             case 4:
-                this.colour = "green";
+                this.color = Color.green;
                 break;
             default:
-                this.colour = "yellow";
+                this.color = Color.yellow;
                 break;
         }
 
@@ -41,7 +43,7 @@ public class Player {
         armiesAvailable = armiesAvailable - i;
     }
 
-    public String getColour() {return colour;}
+    public Color getColor() {return color;}
 
     public boolean hasArmies() {
         return armiesAvailable > 0;

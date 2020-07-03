@@ -62,7 +62,7 @@
       "continent": "North America",
       "neighbours": ["Alberta", "Ontario", "Eastern United States", "Central America"],
       "lat": 452,
-      "lon": 1001
+      "lon": 1100
     },
     {
       "name": "Argentina",
@@ -257,8 +257,8 @@
       "name": "Ural",
       "continent": "Asia",
       "neighbours": ["Afghanistan", "China", "Siberia", "Ukraine"],
-      "lat": 0,
-      "lon": 0
+      "lat": 555,
+      "lon": 263
     },
     {
       "name": "Yakutsk",

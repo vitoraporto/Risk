@@ -33,8 +33,12 @@ public class Board {
                 JSONObject jsObj = iterator.next();
                 String objName = (String) jsObj.get("name");
                 String objSCont = (String) jsObj.get("continent");
+                Long objLat = (Long) jsObj.get("lat");
+                Long objLon = (Long) jsObj.get("lon");
+                int intLat = objLat.intValue();
+                int intLon = objLon.intValue();
                 Continent objCont = objCont(objSCont);
-                territories.put(objName, new Territory(objName,objCont));
+                territories.put(objName, new Territory(objName,objCont,intLat,intLon));
             }
 
             Iterator<JSONObject> iterator2 = terrs.iterator();
@@ -134,5 +138,9 @@ public class Board {
             }
         }
         return true;
+    }
+
+    public Collection<Territory> getTerritories() {
+        return territories.values();
     }
 }

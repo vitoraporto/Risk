@@ -58,7 +58,7 @@ public class Match {
                 getAndPlaceArmies(currPlayer);
                 attacking(currPlayer);
                 if (board.won(currPlayer)){
-                    System.out.print(currPlayer.getColour());
+                    System.out.print(currPlayer.getColor());
                     System.out.println(" won the game!");
                     break;
                 }
@@ -118,7 +118,7 @@ public class Match {
 
     private void initialPlaceArmies() {
         for (Player player : players) {
-            System.out.print(player.getColour());
+            System.out.print(player.getColor());
             System.out.println(" initial place armies:");
             placeArmies(player);
         }

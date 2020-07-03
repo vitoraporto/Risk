@@ -9,10 +9,14 @@ public class Territory {
     private Set<Territory> neighbours = new HashSet<Territory>();
     private Player owner;
     private int armies = 1;
+    private int lat;
+    private int lon;
 
-    public Territory(String name, Continent continent){
+    public Territory(String name, Continent continent, int lat, int lon){
         this.name = name;
         this.continent = continent;
+        this.lat = lat;
+        this.lon = lon;
     }
 
     public void addNeighbour(Territory neighbour){
@@ -49,5 +53,21 @@ public class Territory {
 
     public boolean inContinent(Continent continent) {
         return this.continent == continent;
+    }
+
+    public int getLat() {
+        return lat;
+    }
+
+    public int getLon() {
+        return lon;
+    }
+
+    public int getArmies() {
+        return armies;
+    }
+
+    public Player getOwner(){
+        return owner;
     }
 }
