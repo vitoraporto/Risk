@@ -10,8 +10,7 @@ public class Risk extends JFrame {
     private Risk(Match match){
         initUI(match);
         setVisible(true);
-        //todo: delete
-        //match.play();
+        match.play();
     }
 
     private void initUI(Match match) {

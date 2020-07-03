@@ -1,6 +1,7 @@
 package ui;
 
 import com.company.Match;
+import com.company.Player;
 import com.company.Territory;
 
 import javax.imageio.ImageIO;
@@ -20,6 +21,7 @@ public class Panel extends JPanel implements ActionListener {
     private JTextField textField;
     private JButton button = new JButton("Enter");
     private BufferedImage image;
+    private JLabel player;
 
     public Panel(Match match, JTextField textField) {
         try {
@@ -29,13 +31,18 @@ public class Panel extends JPanel implements ActionListener {
             System.out.println("image path not found");
         }
         this.match = match;
+        match.setPanel(this);
         this.textField = textField;
+        add(new JLabel("Current Player:"));
+        player = new JLabel("");
+        add(player);
         textLable = new JLabel("Input: ");
         add(textLable);
         add(textField);
         button.addActionListener(this);
         add(button);
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -65,5 +72,26 @@ public class Panel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(textField.getText());
+    }
+
+    public void refresh() {
+        paintComponent(this.getGraphics());
+    }
+
+    public void setPlayer(Player player) {
+        Color color = player.getColor();
+        if (color == Color.black){
+            this.player.setText("Black");
+        } else if (color == Color.white){
+            this.player.setText("White");
+        } else if (color == Color.red){
+            this.player.setText("Red");
+        } else if (color == Color.blue){
+            this.player.setText("Blue");
+        } else if (color == Color.green){
+            this.player.setText("Green");
+        } else if (color == Color.yellow){
+            this.player.setText("Yellow");
+        }
     }
 }

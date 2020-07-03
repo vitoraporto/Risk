@@ -1,5 +1,7 @@
 package com.company;
 
+import ui.Panel;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -9,6 +11,7 @@ public class Match {
     private static Board board;
     private Scanner in = new Scanner(System.in);
     private ArrayList<Player> playersLost = new ArrayList<Player>();
+    private Panel panel;
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -118,6 +121,7 @@ public class Match {
 
     private void initialPlaceArmies() {
         for (Player player : players) {
+            panel.setPlayer(player);
             System.out.print(player.getColor());
             System.out.println(" initial place armies:");
             placeArmies(player);
@@ -137,6 +141,7 @@ public class Match {
                 System.out.println("How many armies do you want to place at that territory?");
                 int numArmies = in.nextInt();
                 board.getTerritory(territoryName).placeArmies(numArmies);
+                panel.refresh();
             } else {
                 System.out.println("Territory not available");
             }
@@ -171,5 +176,9 @@ public class Match {
 
     public ArrayList<Player> getPlayersLost() {
         return playersLost;
+    }
+
+    public void setPanel(Panel panel) {
+        this.panel = panel;
     }
 }
