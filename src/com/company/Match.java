@@ -14,6 +14,7 @@ public class Match {
     private ArrayList<Player> playersLost = new ArrayList<Player>();
     private Panel panel;
     private Player currPlayer;
+    private Phase phase;
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -21,6 +22,46 @@ public class Match {
         board = new Board();
         shufflePlayers();
         board.distributeTerritories(players);
+        setCurrPlayer(players.get(0));
+        setPhase(Phase.initialPlaceArmiesCountry);
+    }
+
+    public void start() {
+        panel.setAllLabels(phase,currPlayer);
+        printPlayerTerritories(currPlayer); //temporario
+    }
+
+    public void processInput(String text) {
+        //Todo
+        panel.setAllLabels(phase,currPlayer);
+    }
+
+    public void play() {
+        initialPlaceArmies();
+        int currPlayerIdx = 0;
+        Player currPlayer;
+        while (true){
+            currPlayer = players.get(currPlayerIdx);
+            if (!playersLost.contains(currPlayer)){
+                getAndPlaceArmies(currPlayer);
+                attacking(currPlayer);
+                if (board.won(currPlayer)){
+                    System.out.print(currPlayer.getColor());
+                    System.out.println(" won the game!");
+                    break;
+                }
+                fortifying(currPlayer);
+            }
+            currPlayerIdx = (currPlayerIdx + 1) % players.size();
+        }
+    }
+
+    private void setPhase(Phase phase) {
+        this.phase = phase;
+    }
+
+    private void setCurrPlayer(Player player) {
+        currPlayer = player;
     }
 
     private void makePlayers(int numPlayers) {
@@ -50,26 +91,6 @@ public class Match {
         }
         for (Player player : players) {
             player.setArmiesAvailable(armies);
-        }
-    }
-
-    public void play() {
-        initialPlaceArmies();
-        int currPlayerIdx = 0;
-        Player currPlayer;
-        while (true){
-            currPlayer = players.get(currPlayerIdx);
-            if (!playersLost.contains(currPlayer)){
-                getAndPlaceArmies(currPlayer);
-                attacking(currPlayer);
-                if (board.won(currPlayer)){
-                    System.out.print(currPlayer.getColor());
-                    System.out.println(" won the game!");
-                    break;
-                }
-                fortifying(currPlayer);
-            }
-            currPlayerIdx = (currPlayerIdx + 1) % players.size();
         }
     }
 
@@ -122,28 +143,22 @@ public class Match {
     }
 
     private void initialPlaceArmies() {
-        panel.setPhase("Initial place armies:");
         for (Player player : players) {
-            panel.setPlayer(player);
             placeArmies(player);
         }
     }
 
     private void placeArmies(Player player) {
         while (player.hasArmies()){
-            String explanation = "You have " + player.getArmiesAvailable() + " armies available";
-            panel.setExplanation(explanation);
-            panel.setQuestion("Where to place armies?");
+            phase = Phase.initialPlaceArmiesCountry;
+            panel.setAllLabels(phase,currPlayer);
             printPlayerTerritories(player);
-            String territoryName;
-            // territoryName = in.next();
-            territoryName = getInput();
-            //territoryName = territoryName.replaceAll("_", " ");
+            String territoryName = in.next(); //todo
             if (board.playerIsOwner(player, territoryName)){
-                panel.setQuestion("How many armies do you want to place at that territory?");
-                String sNumArmies = getInput();
+                phase = Phase.initialPlaceArmiesNumber;
+                panel.setAllLabels(phase,currPlayer);
+                String sNumArmies = "0"; //todo
                 int numArmies;
-                // numArmies = in.nextInt();
                 try{
                     numArmies = Integer.parseInt(sNumArmies);
                     board.getTerritory(territoryName).placeArmies(numArmies);
@@ -155,11 +170,6 @@ public class Match {
                 System.out.println("Territory not available");
             }
         }
-    }
-
-    private String getInput() {
-        panel.temporaryBreak();
-        return panel.getInput();
     }
 
     private void printPlayerTerritories(Player player) {
@@ -194,5 +204,9 @@ public class Match {
 
     public void setPanel(Panel panel) {
         this.panel = panel;
+    }
+
+    public Player getCurrPlayer(){
+        return currPlayer;
     }
 }

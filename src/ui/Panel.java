@@ -1,6 +1,7 @@
 package ui;
 
 import com.company.Match;
+import com.company.Phase;
 import com.company.Player;
 import com.company.Territory;
 
@@ -24,7 +25,6 @@ public class Panel extends JPanel implements ActionListener {
     private JLabel player;
     private JLabel explanation;
     private JLabel phase;
-    private boolean perform = false;
 
     public Panel(Match match, JTextField textField) {
         try {
@@ -39,6 +39,7 @@ public class Panel extends JPanel implements ActionListener {
         add(new JLabel("Current Player:"));
         player = new JLabel("");
         add(player);
+        setPlayer(match.getCurrPlayer());
         phase = new JLabel("");
         add(phase);
         explanation = new JLabel("");
@@ -50,6 +51,20 @@ public class Panel extends JPanel implements ActionListener {
         add(button);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        match.processInput(textField.getText());
+    }
+
+    public void refresh() {
+        paintComponent(this.getGraphics());
+    }
+
+    public void setAllLabels(Phase p, Player player){
+        setPlayer(player);
+        setPhaseAndQuestion(p);
+        setExplanation(player, p);
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -76,16 +91,7 @@ public class Panel extends JPanel implements ActionListener {
         g.drawString(Integer.toString(armies),1225 - longitude,725 - latitude);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        perform = true;
-    }
-
-    public void refresh() {
-        paintComponent(this.getGraphics());
-    }
-
-    public void setPlayer(Player player) {
+    private void setPlayer(Player player) {
         Color color = player.getColor();
         if (color == Color.black){
             this.player.setText("Black");
@@ -102,32 +108,61 @@ public class Panel extends JPanel implements ActionListener {
         }
     }
 
-    public void setQuestion(String s) {
+    private void setQuestion(String s) {
         question.setText(s);
     }
 
-    public void setExplanation(String s){
+    private void setExplanation(String s){
         explanation.setText(s);
     }
 
-    public void setPhase(String s) {
+    private void setPhase(String s) {
         phase.setText(s);
     }
 
-    public boolean peformAction() {
-        return perform;
+    private void setExplanation(Player player, Phase p) {
+        if (p == Phase.initialPlaceArmiesCountry || p == Phase.initialPlaceArmiesNumber || p == Phase.PlaceArmiesCountry || p == Phase.PlaceArmiesNumber){
+            setExplanation("You have " + player.getArmiesAvailable() + " armies available");
+        } else {
+            setExplanation(""); //todo later
+        }
     }
 
-    public void setPeform(boolean b) {
-        perform = b;
-    }
-
-    public void temporaryBreak() {
-        while (!peformAction()){}
-        setPeform(false);
-    }
-
-    public String getInput() {
-        return textField.getText();
+    private void setPhaseAndQuestion(Phase p) {
+        String s = "";
+        String question = "";
+        if (p == Phase.initialPlaceArmiesCountry){
+            s = "Initial place armies:";
+            question = "Where to place armies?";
+        } else if (p == Phase.initialPlaceArmiesNumber){
+            s = "Initial place armies:";
+            question = "How many armies do you want to place at that territory?";
+        } else if (p == Phase.PlaceArmiesCountry){
+            s = "Place armies:";
+            question = "Where to place armies?";
+        } else if (p == Phase.PlaceArmiesNumber){
+            s = "Place armies:";
+            question = "How many armies do you want to place at that territory?";
+        } else if (p == Phase.AttackingFrom){
+            s = "Attacking:";
+            question = "Where do you want to attack from?";
+        } else if (p == Phase.AttackingNo){
+            s = "Attacking:";
+            question = "How many armies are you using?";
+        } else if (p == Phase.AttackingTo){
+            s = "Attacking:";
+            question = "Where do you want to attack?";
+        } else if (p == Phase.FortifyingFrom){
+            s = "Fortifying:";
+            question = "Where to transfer armies from?";
+        } else if (p == Phase.FortifyingNo){
+            s = "Fortifying:";
+            question = "How many armies to transfer?";
+        } else if (p == Phase.FortifyingTo){
+            s = "Fortifying:";
+            question = "Where to transfer armies?";
+        }
+        setPhase(s);
+        setQuestion(question);
     }
 }
