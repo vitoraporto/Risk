@@ -80,7 +80,7 @@ public class Board {
         }
     }
 
-    public void distributeTerritories(ArrayList<Player> players) {
+    public void distributeTerritories(LinkedList<Player> players) {
         ArrayList<Territory> arrayTerritories = new ArrayList<>();
         for (Territory terr : territories.values()){
             arrayTerritories.add(terr);

@@ -38,12 +38,12 @@ public class Territory {
 
     public String getName() {return name;}
 
-    public void placeArmies(int numArmies) {
+    public void placeArmies(int numArmies) throws NotEnoughArmiesException {
         if(owner.getArmiesAvailable() >= numArmies) {
             owner.decreaseArmiesAvailable(numArmies);
             increaseArmies(numArmies);
         } else {
-            System.out.println("Do not have enough armies available");
+            throw new NotEnoughArmiesException("Don't have enough armies");
         }
     }
 

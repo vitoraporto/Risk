@@ -2,19 +2,18 @@ package com.company;
 
 import ui.Panel;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Match {
-    private ArrayList<Player> players;
+    private LinkedList<Player> players;
     private static Board board;
     private Scanner in = new Scanner(System.in);
-    private ArrayList<Player> playersLost = new ArrayList<Player>();
     private Panel panel;
     private Player currPlayer;
     private Phase phase;
+    private Territory selectedTerritory1;
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -28,12 +27,71 @@ public class Match {
 
     public void start() {
         panel.setAllLabels(phase,currPlayer);
-        printPlayerTerritories(currPlayer); //temporario
     }
 
     public void processInput(String text) {
-        //Todo
+        if (phase == Phase.initialPlaceArmiesCountry){
+            ProcessInitialPlaceArmiesCountry(text);
+        } else if (phase == Phase.initialPlaceArmiesNumber){
+            ProcessInitialPlaceArmiesNumber(text);
+        } else if (phase == Phase.PlaceArmiesCountry){
+            //todo
+        } else if (phase == Phase.PlaceArmiesNumber){
+            //todo
+        } else if (phase == Phase.AttackingFrom){
+            //todo
+        } else if (phase == Phase.AttackingNo){
+            //todo
+        } else if (phase == Phase.AttackingTo){
+            //todo
+        } else if (phase == Phase.FortifyingFrom){
+            //todo
+        } else if (phase == Phase.FortifyingNo){
+            //todo
+        } else if (phase == Phase.FortifyingTo){
+            //todo
+        }
         panel.setAllLabels(phase,currPlayer);
+    }
+
+    private void ProcessInitialPlaceArmiesNumber(String text) {
+        try{
+            int numArmies = Integer.parseInt(text);
+            selectedTerritory1.placeArmies(numArmies);
+            panel.refresh();
+            if (currPlayer.hasArmies()){
+                phase = Phase.initialPlaceArmiesCountry;
+            } else {
+                if (players.getLast() == currPlayer){
+                    phase = Phase.PlaceArmiesCountry;
+                    currPlayer = players.getFirst();
+                    setArmiesAvailable();
+                } else {
+                    phase = Phase.initialPlaceArmiesCountry;
+                    currPlayer = players.get(players.indexOf(currPlayer)+1);
+                }
+            }
+        } catch (NotEnoughArmiesException e){
+            System.out.println("Don't have enough armies");
+        }
+        catch (Exception e) {
+            System.out.println("Not a Number entered");
+        }
+    }
+
+    private void setArmiesAvailable() {
+        int newArmies = getTerritoryArmies(currPlayer);
+        newArmies = newArmies + getContinentArmies(currPlayer);
+        currPlayer.setArmiesAvailable(newArmies);
+    }
+
+    private void ProcessInitialPlaceArmiesCountry(String text) {
+        if (board.playerIsOwner(currPlayer, text)){
+            selectedTerritory1 = board.getTerritory(text);
+            phase = Phase.initialPlaceArmiesNumber;
+        } else {
+            System.out.println("Player don't have this country");
+        }
     }
 
     public void play() {
@@ -42,16 +100,14 @@ public class Match {
         Player currPlayer;
         while (true){
             currPlayer = players.get(currPlayerIdx);
-            if (!playersLost.contains(currPlayer)){
-                getAndPlaceArmies(currPlayer);
-                attacking(currPlayer);
-                if (board.won(currPlayer)){
-                    System.out.print(currPlayer.getColor());
-                    System.out.println(" won the game!");
-                    break;
-                }
-                fortifying(currPlayer);
+            getAndPlaceArmies(currPlayer);
+            attacking(currPlayer);
+            if (board.won(currPlayer)){
+                System.out.print(currPlayer.getColor());
+                System.out.println(" won the game!");
+                break;
             }
+            fortifying(currPlayer);
             currPlayerIdx = (currPlayerIdx + 1) % players.size();
         }
     }
@@ -65,7 +121,7 @@ public class Match {
     }
 
     private void makePlayers(int numPlayers) {
-        players = new ArrayList<Player>();
+        players = new LinkedList<Player>();
         for (int i = 0; i < numPlayers; i++) {
             players.add(new Player(i));
         }
@@ -163,7 +219,10 @@ public class Match {
                     numArmies = Integer.parseInt(sNumArmies);
                     board.getTerritory(territoryName).placeArmies(numArmies);
                     panel.refresh();
-                } catch (Exception e) {
+                } catch (NotEnoughArmiesException e){
+                    System.out.println("Don't have enough armies");
+                }
+                catch (Exception e) {
                     System.out.println("Not a Number entered");
                 }
             } else {
@@ -183,23 +242,19 @@ public class Match {
         int numPlayers = players.size();
         double doublePlayer = Math.random()*numPlayers;
         int firstplayer = (int) doublePlayer;
-        ArrayList<Player> newPlayers = new ArrayList<Player>();
+        LinkedList<Player> newPlayers = new LinkedList<Player>();
         for (int i = 0; i < numPlayers; i++){
             newPlayers.add(players.get((firstplayer + i) % numPlayers));
         }
         players = newPlayers;
     }
 
-    public ArrayList<Player> getPlayers(){
+    public LinkedList<Player> getPlayers(){
         return players;
     }
 
     public static Board getBoard() {
         return board;
-    }
-
-    public ArrayList<Player> getPlayersLost() {
-        return playersLost;
     }
 
     public void setPanel(Panel panel) {
