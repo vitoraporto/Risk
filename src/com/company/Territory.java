@@ -38,6 +38,10 @@ public class Territory {
 
     public String getName() {return name;}
 
+    public boolean isNeighbour(Territory territory){
+        return neighbours.contains(territory);
+    }
+
     public void placeArmies(int numArmies) throws NotEnoughArmiesException {
         if(owner.getArmiesAvailable() >= numArmies) {
             owner.decreaseArmiesAvailable(numArmies);
@@ -49,6 +53,14 @@ public class Territory {
 
     private void increaseArmies(int numArmies) {
         armies = armies + numArmies;
+    }
+
+    public void reduceArmies(int numArmies) {
+        if (armies - numArmies < 0){
+            armies = 0;
+        } else {
+            armies = armies - numArmies;
+        }
     }
 
     public boolean inContinent(Continent continent) {
@@ -69,5 +81,9 @@ public class Territory {
 
     public Player getOwner(){
         return owner;
+    }
+
+    public void setArmies(int armies) {
+        this.armies = armies;
     }
 }

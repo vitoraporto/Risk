@@ -2,17 +2,20 @@ package com.company;
 
 import ui.Panel;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Scanner;
 
+//todo: test and correct for negative inputs
+//todo: da erro sempre quando bota input invalido
 public class Match {
     private LinkedList<Player> players;
     private static Board board;
-    private Scanner in = new Scanner(System.in);
     private Panel panel;
     private Player currPlayer;
     private Phase phase;
     private Territory selectedTerritory1;
+    private Territory selectedTerritory2;
 
     public Match(int numPlayers) throws Exception {
         makePlayers(numPlayers);
@@ -21,7 +24,7 @@ public class Match {
         shufflePlayers();
         board.distributeTerritories(players);
         setCurrPlayer(players.get(0));
-        setPhase(Phase.initialPlaceArmiesCountry);
+        phase = Phase.initialPlaceArmiesCountry;
     }
 
     public void start() {
@@ -32,47 +35,139 @@ public class Match {
         if (phase == Phase.initialPlaceArmiesCountry){
             ProcessInitialPlaceArmiesCountry(text);
         } else if (phase == Phase.initialPlaceArmiesNumber){
-            ProcessInitialPlaceArmiesNumber(text);
+            try{
+                ProcessInitialPlaceArmiesNumber(text);
+            } catch (NotEnoughArmiesException e){
+                System.out.println("Don't have enough armies");
+            } catch (Exception e) {
+                System.out.println("Not a Number entered");
+            }
         } else if (phase == Phase.PlaceArmiesCountry){
             ProcessPlaceArmiesCountry(text);
         } else if (phase == Phase.PlaceArmiesNumber){
-            ProcessPlaceArmiesNumber(text);
+            try{
+                ProcessPlaceArmiesNumber(text);
+            } catch (NotEnoughArmiesException e){
+                System.out.println("Don't have enough armies");
+            } catch (Exception e) {
+                System.out.println("Not a Number entered");
+            }
         } else if (phase == Phase.AttackingFrom){
             ProcessAttackingFrom(text);
-        } else if (phase == Phase.AttackingNo){
-            //todo
         } else if (phase == Phase.AttackingTo){
-            //todo
+            ProcessAttackingTo(text);
+        } else if (phase == Phase.AttackingNo){
+            try{
+                ProcessAttackingNo(text);
+            } catch (Exception e){
+                System.out.println("Not a Number entered");
+            }
         } else if (phase == Phase.FortifyingFrom){
             //todo
-        } else if (phase == Phase.FortifyingNo){
-            //todo
         } else if (phase == Phase.FortifyingTo){
+            //todo
+        } else if (phase == Phase.FortifyingNo){
             //todo
         }
         panel.setAllLabels(phase,currPlayer);
     }
 
-    private void ProcessAttackingFrom(String text) {
-        //todo
+    private void ProcessAttackingNo(String text) {
+        int numArmies = Integer.parseInt(text);
+        if (numArmies > 3 || numArmies < 1){
+            System.out.println("Over the maximum number of 3 attacking armies or not positive");
+        } else {
+            if (selectedTerritory1.getArmies() > numArmies){
+                attack(selectedTerritory1, selectedTerritory2, numArmies);
+                phase = Phase.AttackingFrom;
+            } else {
+                System.out.println("don't have this number of armies to attack");
+            }
+        }
     }
 
-    private void ProcessPlaceArmiesNumber(String text) {
-        try{
-            int numArmies = Integer.parseInt(text);
-            selectedTerritory1.placeArmies(numArmies);
-            panel.refresh();
-            if (currPlayer.hasArmies()){
-                phase = Phase.PlaceArmiesCountry;
+    private void attack(Territory attacker, Territory defender, int armiesAttacking) {
+        int armiesDefending = Math.min(3,defender.getArmies());
+        ArrayList<Integer> attackingDices = rollDicesSorted(armiesAttacking);
+        ArrayList<Integer> defendingDices = rollDicesSorted(armiesDefending);
+        int minSize = Math.min(armiesAttacking,armiesDefending);
+        int attackLost = 0;
+        int defenseLost = 0;
+        for (int i = 0; i < minSize; i++){
+            if (attackingDices.get(attackingDices.size() - 1 - i) > defendingDices.get(defendingDices.size() - 1 - i)){
+                defenseLost++;
             } else {
-                phase = Phase.AttackingFrom;
+                attackLost++;
             }
-        } catch (NotEnoughArmiesException e){
-            System.out.println("Don't have enough armies");
         }
-        catch (Exception e) {
-            System.out.println("Not a Number entered");
+        if (defenseLost < defender.getArmies()){
+            defender.reduceArmies(defenseLost);
+            attacker.reduceArmies(attackLost);
+        } else {
+            Player looser = defender.getOwner();
+            attacker.reduceArmies(armiesAttacking);
+            defender.setOwner(attacker.getOwner());
+            defender.setArmies(armiesAttacking-attackLost);
+            if(board.getPlayerTerritories(looser).size() == 0){
+                players.remove(looser);
+            }
         }
+    }
+
+    private ArrayList<Integer> rollDicesSorted(int numberOfDices) {
+        ArrayList<Integer> answer = new ArrayList<>();
+        for (int i = 0; i<numberOfDices; i++){
+            int dice = (int) Math.ceil(Math.random()*6);
+            answer.add(dice);
+        }
+        Collections.sort(answer);
+        System.out.println(answer); //todo: delete
+        return answer;
+    }
+
+    private void ProcessAttackingTo(String text) {
+        selectedTerritory2 = board.getTerritory(text);
+        if (selectedTerritory2 != null){
+            if (selectedTerritory1.isNeighbour(selectedTerritory2)){
+                if (!board.playerIsOwner(currPlayer,text)){
+                    phase = Phase.AttackingNo;
+                } else {
+                    System.out.println("player already owns the territory he wants to attack");
+                }
+            } else {
+                System.out.println("player they don't have frontier");
+            }
+        } else {
+            System.out.println("territory doesn't exist");
+        }
+    }
+
+    private void ProcessAttackingFrom(String text) {
+        if (text.equals("")){
+            phase = Phase.FortifyingFrom;
+            return;
+        }
+        if (board.playerIsOwner(currPlayer, text)){
+            selectedTerritory1 = board.getTerritory(text);
+            if (selectedTerritory1.getArmies() > 1){
+            phase = Phase.AttackingTo;
+            } else {
+                System.out.println("Territory have only one army. You can not attack from it");
+            }
+        } else {
+            System.out.println("Player don't have this country");
+        }
+    }
+
+    private void ProcessPlaceArmiesNumber(String text) throws NotEnoughArmiesException {
+        int numArmies = Integer.parseInt(text);
+        selectedTerritory1.placeArmies(numArmies);
+        if (currPlayer.hasArmies()){
+            phase = Phase.PlaceArmiesCountry;
+        } else {
+            phase = Phase.AttackingFrom;
+        }
+
     }
 
     private void ProcessPlaceArmiesCountry(String text) {
@@ -84,28 +179,20 @@ public class Match {
         }
     }
 
-    private void ProcessInitialPlaceArmiesNumber(String text) {
-        try{
-            int numArmies = Integer.parseInt(text);
-            selectedTerritory1.placeArmies(numArmies);
-            panel.refresh();
-            if (currPlayer.hasArmies()){
-                phase = Phase.initialPlaceArmiesCountry;
+    private void ProcessInitialPlaceArmiesNumber(String text) throws NotEnoughArmiesException {
+        int numArmies = Integer.parseInt(text);
+        selectedTerritory1.placeArmies(numArmies);
+        if (currPlayer.hasArmies()){
+            phase = Phase.initialPlaceArmiesCountry;
+        } else {
+            if (players.getLast() == currPlayer){
+                phase = Phase.PlaceArmiesCountry;
+                currPlayer = players.getFirst();
+                setArmiesAvailable();
             } else {
-                if (players.getLast() == currPlayer){
-                    phase = Phase.PlaceArmiesCountry;
-                    currPlayer = players.getFirst();
-                    setArmiesAvailable();
-                } else {
-                    phase = Phase.initialPlaceArmiesCountry;
-                    currPlayer = players.get(players.indexOf(currPlayer)+1);
-                }
+                phase = Phase.initialPlaceArmiesCountry;
+                currPlayer = players.get(players.indexOf(currPlayer)+1);
             }
-        } catch (NotEnoughArmiesException e){
-            System.out.println("Don't have enough armies");
-        }
-        catch (Exception e) {
-            System.out.println("Not a Number entered");
         }
     }
 
@@ -124,16 +211,12 @@ public class Match {
         }
     }
 
-    private void setPhase(Phase phase) {
-        this.phase = phase;
-    }
-
     private void setCurrPlayer(Player player) {
         currPlayer = player;
     }
 
     private void makePlayers(int numPlayers) {
-        players = new LinkedList<Player>();
+        players = new LinkedList<>();
         for (int i = 0; i < numPlayers; i++) {
             players.add(new Player(i));
         }
@@ -198,7 +281,7 @@ public class Match {
         int numPlayers = players.size();
         double doublePlayer = Math.random()*numPlayers;
         int firstplayer = (int) doublePlayer;
-        LinkedList<Player> newPlayers = new LinkedList<Player>();
+        LinkedList<Player> newPlayers = new LinkedList<>();
         for (int i = 0; i < numPlayers; i++){
             newPlayers.add(players.get((firstplayer + i) % numPlayers));
         }

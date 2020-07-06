@@ -54,9 +54,10 @@ public class Panel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         match.processInput(textField.getText());
+        refresh();
     }
 
-    public void refresh() {
+    private void refresh() {
         paintComponent(this.getGraphics());
     }
 
@@ -145,7 +146,7 @@ public class Panel extends JPanel implements ActionListener {
             question = "How many armies do you want to place at that territory?";
         } else if (p == Phase.AttackingFrom){
             s = "Attacking:";
-            question = "Where do you want to attack from?";
+            question = "Where do you want to attack from? (press enter with input empty to fortify)";
         } else if (p == Phase.AttackingNo){
             s = "Attacking:";
             question = "How many armies are you using?";
